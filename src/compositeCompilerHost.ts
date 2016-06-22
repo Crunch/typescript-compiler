@@ -80,7 +80,7 @@ module tsc {
 		}
 
 		// Implementing CompilerHost interface
-		getDefaultLibFilename(): string {
+		getDefaultLibFileName(): string {
 			return this.options.defaultLibFilename || path.join(__dirname, "lib", "lib.d.ts");
 		}
 
@@ -157,7 +157,7 @@ module tsc {
 
 		private _readFromStrings(filename: string, languageVersion: ts.ScriptTarget, onError?: (message: string) => void): ts.SourceFile {
 
-			if (path.normalize(filename) === this.getDefaultLibFilename())
+			if (path.normalize(filename) === this.getDefaultLibFileName())
 				return this._readFromFile(filename, languageVersion, onError);
 
 			if (this._sources[filename])
